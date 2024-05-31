@@ -1,37 +1,31 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
-  // {
-  //   path: '/',// set path  page
-  //   name: 'home', // set namepage path
-  //   component: HomeView //call file import
-  // },
   {
-    path: '',// set path
-    name: 'toobar', // set
-    component: () => import('../views/toobar.vue'),
-    children: [
-    
-      {
-        path: '/',// set path  page
-        name: 'home', // set namepage path
-        component: HomeView //call file import
-      },
-    ] //
+    path: '/login',
+    name: 'login', 
+    component: () => import('../views/Login.vue'),
   },
-
-
- 
-]
+  {
+    path: '/',
+    component: () => import('../views/Main.vue'), 
+    children: [
+      {
+        path: '',
+        name: 'home',
+        component: () => import('../views/Home.vue'),
+      },
+    ]
+  }
+];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
 
-export default router
+export default router;
