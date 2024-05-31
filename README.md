@@ -1,4 +1,4 @@
-# Vuewordshop
+# fontend cafeshop
 
 ## Project setup
 ```
