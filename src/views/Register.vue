@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <v-container>
       <v-card-text style="width: 1000px;" class="pa-4">
         <h1>สมัครสมาชิก</h1>
@@ -75,4 +75,4 @@ export default {
 </script>
   
 <style scoped>
-</style>
+</style> -->
