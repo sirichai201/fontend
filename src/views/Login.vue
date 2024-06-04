@@ -1,55 +1,68 @@
 <template>
   <div class="login-container">
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="submitForm" class="login-form">
       <div class="form-group">
         <label for="username">Username:</label>
-        <input type="text" id="username" v-model="username" required>
+        <input v-model="username" type="text" id="username" required>
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" id="password" v-model="password" required>
+        <input v-model="password" type="password" id="password" required>
       </div>
       <button type="submit">Login</button>
+      <p v-if="loginMessage" class="login-message">{{ loginMessage }}</p>
     </form>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-  data: () => ({
- 
-    username: '',
-    password: ''
-  }),
+  data() {
+    return {
+      username: '',
+      password: '',
+      loginMessage: ''
+    };
+  },
   methods: {
-    submitForm() {
-      // Handle form submission
-      alert(`Username: ${this.username}\nPassword: ${this.password}`);
+    async submitForm() {
+      try {
+        const response = await axios.post('http://localhost:3000/api/user/login', {
+          username: this.username,
+          password: this.password
+        });
+        this.loginMessage = `Login successful: ${response.data}`;
+        this.$router.push('/');
+      } catch (error) {
+        if (error.response && error.response.data) {
+          this.loginMessage = `Login failed: ${error.response.data}`;
+        } else {
+          this.loginMessage = 'Login failed: An error occurred';
+        }
+      }
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
 .login-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
-  text-align: center;
- 
+  height: 100vh;
+  background-color: #f0f0f0;
 }
 
-h1 {
-  font-family: 'Arial', sans-serif;
-  margin-bottom: 20px;
-  color: #333;
+.login-form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
 }
 
 .form-group {
@@ -58,9 +71,8 @@ h1 {
 
 label {
   display: block;
-  font-weight: bold;
   margin-bottom: 5px;
-  color: #555;
+  color: #333;
 }
 
 input {
@@ -68,22 +80,30 @@ input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
+  box-sizing: border-box;
 }
 
 button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
-  color: #fff;
   border: none;
+  background: #007bff;
+  color: white;
   border-radius: 4px;
-  font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background: #0056b3;
+}
+
+.login-message {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }
 </style>
