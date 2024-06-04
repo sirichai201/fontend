@@ -1,25 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+Thai:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+Thai:wght@100..900&display=swap");
 
 :root {
-  --primary: #FF8787;
-  --secondary: #A8A8A8;
+  --primary: #ff8787;
+  --secondary: #a8a8a8;
   --dark-gray: #3e3e3e;
-  --gray: #A8A8A8;
+  --gray: #a8a8a8;
   --light-gray: #f1f4f7;
   --light: #eeeeee;
-  --white: #FFFBFB;
-  --dark: #181A20;
+  --white: #fffbfb;
+  --dark: #181a20;
   --text: #212121;
-  --success: #AFE385;
-  --warning: #FFE587;
-  --info: #85C1E3;
-  --danger: #FF8787;
-  --border-main: 20rem;
+  --success: rgb(175, 227, 133);
+  --warning: #ffe587;
+  --info: #85c1e3;
+  --danger: #ff8787;
+  --border-button: 20rem;
+  --border-main: 1rem;
+  --shadow-main: 0 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 * {
   font-size: 14px;
-  font-family: "Noto Sans Thai Looped"," Inter", sans-serif;
+  font-family: "Noto Sans Thai Looped", " Inter", sans-serif;
   box-sizing: border-box;
   color: var(--text);
   font-weight: 400;
@@ -27,10 +29,17 @@
 }
 
 .v-application--wrap {
-    background-color: var(--light) !important;
+  background-color: var(--light) !important;
 }
 
-h1, h2, h3, h4, h5, h6, label, thead {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+thead {
   font-family: "Noto Sans Thai", "Inter", sans-serif !important;
   font-weight: bold;
 }
@@ -50,7 +59,7 @@ i.fa-solid:hover {
   height: 250px;
   width: 100%;
   object-fit: cover;
-  border-radius: var(--border-main);
+  border-radius: var(--border-button);
   object-position: 80% 100%;
   padding: 0px 3px;
 }
@@ -59,7 +68,7 @@ i.fa-solid:hover {
   min-height: 250px;
   width: 100%;
   object-fit: cover;
-  border-radius: var(--border-main);
+  border-radius: var(--border-button);
   object-position: 80% 100%;
   padding: 0px 3px;
 }
@@ -69,7 +78,6 @@ i.fa-solid:hover {
   color: var(--primary);
   text-shadow: 5px 3px 10px rgba(0, 0, 0, 0.5);
 }
-
 
 @keyframes scroll-horizontal {
   0% {
@@ -85,9 +93,18 @@ i.fa-solid:hover {
 .text-white {
   color: var(--white) !important;
 }
-
+.text-success {
+  color: var(--success) !important;
+}
+.text-warning {
+  color: var(--warning) !important;
+}
 a.text-white:hover {
   color: var(--primary) !important;
+}
+
+.text-dark {
+  color: var(--text) !important;
 }
 
 .text-secondary {
@@ -106,13 +123,18 @@ pre code a {
 }
 
 .btn {
-  border-radius: var(--border-main);
+  border-radius: var(--border-button);
   font-weight: 700;
   padding: 10px 25px !important;
 }
 
 .bg-text {
   background-color: var(--text) !important;
+}
+
+
+.bg-warning {
+  background-color: var(--warning) !important;
 }
 
 .bg-dark,
@@ -152,22 +174,37 @@ pre code a {
   color: var(--white) !important;
 }
 
-.btn-outline-success {
-  border: 2px solid var(--success) !important;
-  color: var(--text) !important;
-}
-
-.bg-success,
 .btn-success {
   background-color: var(--success) !important;
   border: 2px solid var(--success) !important;
   color: var(--text) !important;
 }
 
+.bg-success {
+  background-color: var(--success) !important;
+}
+
+.bg-success-light {
+  background-color: rgba(175, 227, 133, 0.3);
+}
+
+.bg-danger {
+  background-color: var(--danger) !important; 
+}
+
+.bg-danger-light {
+  background-color: rgba(255, 135, 135, 0.3); 
+}
+
 .btn-success:hover {
   background-color: var(--gray);
   border: 2px solid var(--gray);
   color: var(--white) !important;
+}
+
+.btn-outline-success {
+  border: 2px solid var(--success) !important;
+  color: var(--text) !important;
 }
 
 .btn-outline-success:hover {
@@ -184,31 +221,33 @@ pre code a {
   border-color: var(--dark-gray) !important;
 }
 
-.form-control {
+.rounded-main {
   border-radius: var(--border-main);
+}
+
+.form-control {
+  border-radius: var(--border-button);
   border-color: var(--primary);
   background-color: transparent;
   padding: 0.5rem 1rem;
 }
 
-.card-weapon {
-  height: auto;
-  height: 40vh;
+.accordion-button, 
+.accordion-item {
+  background-color: transparent !important;
 }
-
-.card-weapon img {
-  max-height: 20vh;
-  height: auto;
-  object-fit: contain;
-}
-
-.card-weapon-detail {
-  position: absolute;
-  bottom: 1.5rem;
-} 
 
 .accordion-item {
   border: 0;
+}
+
+.accordion-body {
+  border-radius: 0 0 1rem 1rem;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--white) !important;
+  color: var(--primary) !important;
 }
 
 .navbar-toggler {
@@ -233,44 +272,24 @@ pre code a {
   background-color: var(--text);
 } */
 
-.v-application ul, 
-.v-application ol {
-  padding-left: 0;
-}
-
 .dropdown-menu li a:hover {
   background-color: transparent;
 }
 
-footer a.nav-link,
+footer .nav-link a,
 footer span.nav-link,
-footer a.nav-link i {
+footer .nav-link i {
   color: var(--gray);
+  text-decoration: none;
 }
 
-footer a.nav-link i:hover {
-  color: var(--white);
+footer .nav-link :hover {
+  color: var(--text);
 }
 
 
 
 
-
-
-/* Custom */
-.category {
-  background-color: var(--primary);
-  color: var(--white);
-  border-radius: var(--border-main);
-  padding: 5px 8px;
-  display: inline-flex;
-  align-items: center;
-}
-
-/* .hero-image {
-  border-radius: 30rem 30rem 0 0;
-  width: 100%;
-} */
 
 
 
@@ -291,7 +310,8 @@ footer a.nav-link i:hover {
   font-weight: 800 !important;
 }
 
-.v-tab:before, .v-tabs-slider-wrapper {
+.v-tab:before,
+.v-tabs-slider-wrapper {
   background-color: var(--primary) !important;
 }
 
@@ -300,10 +320,77 @@ footer a.nav-link i:hover {
   border-color: var(--primary) !important;
 }
 
+.v-window {
+  height: 400px !important;
+}
 
-/* .theme--light.v-btn.v-btn--has-bg {
-  background-color: transparent !important;
+/* .theme--light.v-sheet {
+  background: transparent !important;
 } */
+
+.v-application .elevation-1 {
+  box-shadow: none !important;
+}
+
+.v-sheet.v-card:not(.v-sheet--outlined) {
+  border-radius: var(--border-main) !important;
+  box-shadow: var(--shadow-main) !important;
+}
+
+.v-application ul,
+.v-application ol {
+  padding-left: 0;
+}
+
+.theme--light.v-expansion-panels .v-expansion-panel {
+  background-color: transparent !important;
+}
+
+.v-application .elevation-10 {
+  box-shadow: none !important;
+}
+
+a.v-breadcrumbs__item {
+  color: var(--secondary) !important;
+}
+
+div.v-breadcrumbs__item {
+  color: var(--primary);
+}
+
+
+
+
+
+
+/* Custom */
+.category {
+  background-color: var(--success);
+  color: var(--text);
+  border-radius: var(--border-button);
+  padding: 0 1rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.home-hero-image {
+  border-radius: 0.5rem 10rem 0.5rem 0.5rem;
+  width: 100%;
+  height: fill;
+}
+
+.home-hero-image-2 {
+  border-radius: 0.5rem 0.5rem 10rem 0.5rem;
+  width: 100%;
+  height: fill;
+}
+
+.random-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
 
 .links {
   text-decoration: none;
@@ -313,52 +400,66 @@ footer a.nav-link i:hover {
   color: var(--white) !important;
 }
 
+.login-bg:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  background-image: url("https://media.istockphoto.com/id/475511846/vector/kitchen-seamless-pattern-vector-background.jpg?s=612x612&w=0&k=20&c=inpW5Mc2MFyuc7PsMXVY49OUBU39EXekcCNe8xVeI_k=");
+  width: 100%;
+  background-repeat: repeat;
+}
+
 /* ENDLESS ROTATE */
-.rotate{
-  animation: rotate 8s linear infinite; 
+.rotate {
+  animation: rotate 8s linear infinite;
 }
 .start-end {
   animation: loader 1s infinite;
 }
 
-@keyframes rotate{
-  to{ transform: rotate(360deg); }
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-@keyframes loader{
+@keyframes loader {
   0% {
     translate: 0px 0px;
   }
-  100%{
+  100% {
     translate: 20px 0px;
-    rotate:-45deg;
+    rotate: -45deg;
   }
 }
 
-/* // Small devices (landscape phones, 576px and up) */
+
+
+
+
+
+
+/* Responsive */
 @media screen and (max-width: 576px) {
-  .exc-image {
+  .exc-image,
+  .random-img {
     height: 200px;
   }
 }
 
-/* // Medium devices (tablets, 768px and up) */
-@media screen and (max-width: 768px) { 
-  .card-weapon {
-    height: 20vh;
-  }
- }
+@media screen and (max-width: 768px) {
+}
 
-/* // Large devices (desktops, 992px and up) */
-@media screen and (max-width: 992px) { 
-  .exc-image {
-    height: 300px;
+@media screen and (max-width: 992px) {
+  .random-img {
+    height: 250px;
   }
+}
 
-  .card-weapon {
-    height: 30vh;
-  }
- }
-
-/* // Extra large devices (large desktops, 1200px and up) */
-@media screen and (max-width: 1200px) { }
+@media screen and (max-width: 1200px) {
+}

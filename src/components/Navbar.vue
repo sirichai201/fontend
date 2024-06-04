@@ -28,7 +28,7 @@
               <a href="/features" class="nav-link">Appetizers</a>
             </li>
             <li class="nav-item">
-              <a href="/allBundle" class="nav-link">Menu</a>
+              <a href="/menu" class="nav-link">Menu</a>
             </li>
             <li class="nav-item">
               <a href="/allBundle" class="nav-link">About us</a>
@@ -54,11 +54,11 @@
           </ul>
           <div class="d-flex">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item mr-2">
+              <li class="nav-item mr-2 mb-lg-0 mb-md-2 mb-sm-2 mb-2">
                 <a href="" class="nav-link"
                   ><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
               </li>
-              <li class="nav-item mr-2">
+              <li class="nav-item mr-2 mb-lg-0 mb-md-2 mb-sm-2 mb-2">
                 <a href="/login" class="nav-link btn btn-success">Sign in</a>
               </li>
               <li class="nav-item">
