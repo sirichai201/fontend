@@ -4,8 +4,7 @@
       <v-row class="text-center justify-content-center">
         <v-col lg="6" md="8" sm="12">
           <h1>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
+           TEST
           </h1>
         </v-col>
       </v-row>
