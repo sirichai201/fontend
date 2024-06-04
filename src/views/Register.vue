@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!-- <template>
     <v-container>
       <v-card-text style="width: 1000px;" class="pa-4">
@@ -18,7 +17,6 @@
         </v-form>
       </v-card-text>
     </v-container>
-=======
 <template>
   <v-container>
     <v-card-text style="width: 1000px" class="pa-4">
@@ -61,7 +59,6 @@
       </v-form>
     </v-card-text>
   </v-container>
->>>>>>> main
 </template>
 
 <script>
@@ -130,11 +127,8 @@ export default {
 },
 };
 </script>
-<<<<<<< HEAD
   
 <style scoped>
 </style> -->
-=======
 
 <style scoped></style>
->>>>>>> main

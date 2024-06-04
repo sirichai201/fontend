@@ -4,7 +4,7 @@
       <v-row class="text-center justify-content-center">
         <v-col lg="6" md="8" sm="12">
           <h1>
-           TEST
+           TEST02
           </h1>
         </v-col>
       </v-row>
