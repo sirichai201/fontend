@@ -17,7 +17,7 @@
         </v-col>
       </v-row>
 
-      <v-row class="text-center justify-content-center">
+     <v-row class="text-center justify-content-center">
         <v-col lg="6" md="8" sm="12">
           <form>
             <input
@@ -28,7 +28,7 @@
             />
           </form>
         </v-col>
-      </v-row>
+      </v-row> 
     </v-container>
 
     <div class="my-10">
