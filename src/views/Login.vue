@@ -3,13 +3,13 @@
     <form @submit.prevent="submitForm" class="login-form">
       <div class="form-group">
         <label for="username">Username:</label>
-        <input v-model="username" type="text" id="username" required>
+        <input v-model="username" @input="checkForm" type="text" id="username" required>
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
-        <input v-model="password" type="password" id="password" required>
+        <input v-model="password" @input="checkForm" type="password" id="password" required>
       </div>
-      <button type="submit">Login</button>
+      <button :class="{ 'move-button': !isFormComplete }" @mouseover="moveButton" ref="loginButton" type="submit">Login</button>
       <p v-if="loginMessage" class="login-message">{{ loginMessage }}</p>
     </form>
   </div>
@@ -23,7 +23,9 @@ export default {
     return {
       username: '',
       password: '',
-      loginMessage: ''
+      loginMessage: '',
+      isFormComplete: false,
+      originalButtonPosition: { left: '', top: '' },
     };
   },
   methods: {
@@ -34,7 +36,7 @@ export default {
           password: this.password
         });
         this.loginMessage = `Login successful: ${response.data}`;
-        this.$router.push('/');
+        this.$router.push('/main');
       } catch (error) {
         if (error.response && error.response.data) {
           this.loginMessage = `Login failed: ${error.response.data}`;
@@ -42,9 +44,42 @@ export default {
           this.loginMessage = 'Login failed: An error occurred';
         }
       }
+    },
+    checkForm() {
+      this.isFormComplete = this.username !== '' && this.password !== '';
+      if (this.isFormComplete || (this.username === '' && this.password === '')) {
+        this.resetButtonPosition();
+      }
+    },
+    moveButton() {
+      if (!this.isFormComplete) {
+        const button = this.$refs.loginButton;
+        const parentRect = button.parentElement.getBoundingClientRect();
+        const buttonRect = button.getBoundingClientRect();
+        const newLeft = Math.random() * (parentRect.width - buttonRect.width);
+        const newTop = Math.random() * (parentRect.height - buttonRect.height);
+
+        button.style.position = 'absolute';
+        button.style.left = `${newLeft}px`;
+        button.style.top = `${newTop}px`;
+      }
+    },
+    resetButtonPosition() {
+      const button = this.$refs.loginButton;
+      button.style.position = '';
+      button.style.left = this.originalButtonPosition.left;
+      button.style.top = this.originalButtonPosition.top;
     }
+  },
+  mounted() {
+    this.checkForm();
+    this.$nextTick(() => {
+      const button = this.$refs.loginButton;
+      this.originalButtonPosition.left = button.style.left;
+      this.originalButtonPosition.top = button.style.top;
+    });
   }
-}
+};
 </script>
 
 <style scoped>
@@ -54,6 +89,7 @@ export default {
   align-items: center;
   height: 100vh;
   background-color: #f0f0f0;
+  position: relative;
 }
 
 .login-form {
@@ -63,6 +99,7 @@ export default {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
+  position: relative;
 }
 
 .form-group {
@@ -92,10 +129,15 @@ button {
   border-radius: 4px;
   cursor: pointer;
   margin-top: 10px;
+  transition: all 0.3s ease;
 }
 
 button:hover {
   background: #0056b3;
+}
+
+button.move-button {
+  position: relative;
 }
 
 .login-message {
