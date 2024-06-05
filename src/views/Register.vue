@@ -1,4 +1,4 @@
-<!-- <template>
+ <!-- <template>
     <v-container>
       <v-card-text style="width: 1000px;" class="pa-4">
         <h1>สมัครสมาชิก</h1>
@@ -17,7 +17,8 @@
         </v-form>
       </v-card-text>
     </v-container>
-<template>
+  </template> -->
+  <template>
   <div class="login-bg">
   <v-container class="min-vh-100 d-flex justify-content-center align-center login-bg">
     <v-card style="width: 800px" class="pa-4">
@@ -100,7 +101,7 @@
     </v-card>
   </v-container>
 </div>
-</template>
+</template> 
 
 <script>
 import axios from "axios";
@@ -169,4 +170,5 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>
