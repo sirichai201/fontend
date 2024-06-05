@@ -24,7 +24,7 @@ const routes = [
     component: () => import("../views/Main.vue"),
     children: [
       {
-        path: "",
+        path: "",  // This is the default sub-path for the root
         name: "home",
         component: () => import("../views/Home.vue"),
       },
@@ -38,7 +38,32 @@ const routes = [
         name: "menu",
         component: () => import("../views/Menu.vue"),
       },
+      {
+        path: "menu/:id",
+        name: "MenuDetail",
+        component: () => import("../views/MenuDetail.vue"),
+      },
+      {
+        path: "cart",
+        name: "cart",
+        component: () => import("../views/Cart.vue"),
+      },
     ],
+  },
+  {
+    path: "/admin",
+    component: () => import("../components/AdminNav.vue"),
+    children: [
+      {
+        path: "",  // This is the default sub-path for the admin
+        name: "admin",
+        component: () => import("../views/Admin.vue"),
+      },
+    ],
+  },
+  {
+    path: "*",  // Catch all undefined routes
+    redirect: "/",
   },
 ];
 

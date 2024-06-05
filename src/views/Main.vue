@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Navbar />
-      <!-- View -->
+    <Navbar :user="user" @logout="handleLogout" />
+      <!-- <router-view /> -->
     <Footer />
   </div>
 </template>
@@ -15,7 +15,29 @@ export default {
   components: {
     Navbar,
     Footer
-  }
+  },
+  data() {
+    return {
+      user: null,
+    };
+  },
+  created() {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      this.user = JSON.parse(userData);
+    }
+  },
+  methods: {
+    handleLoginSuccess(user) {
+      this.user = user;
+      localStorage.setItem('user', JSON.stringify(user));
+    },
+    handleLogout() {
+      this.user = null;
+      localStorage.removeItem('user');
+      // this.$router.push('/login');
+    }
+  },
 };
 </script>
 

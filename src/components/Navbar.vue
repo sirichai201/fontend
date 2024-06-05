@@ -2,9 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg bg-white shadow-sm py-4">
       <div class="container-fluid">
-        <a class="navbar-brand text-primary font-weight-bold" href="/"
-          >CafeShop</a
-        >
+        <a class="navbar-brand text-primary font-weight-bold" href="/">CaféShop</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -46,25 +44,29 @@
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
               </ul>
             </li>
           </ul>
           <div class="d-flex">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item mr-2 mb-lg-0 mb-md-2 mb-sm-2 mb-2">
-                <a href="" class="nav-link"
-                  ><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
+                <a @click.prevent="handleCartClick" class="nav-link"><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
               </li>
               <li class="nav-item mr-2 mb-lg-0 mb-md-2 mb-sm-2 mb-2">
-                <a href="/login" class="nav-link btn btn-success">Sign in</a>
+                <!-- <a v-if="user" href="/profile" class="nav-link btn btn-outline-success">{{ user.username }}</a> -->
+                <div v-if="user" class="dropdown">
+                  <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-user fa-lg mr-3"></i> {{ user.username }}
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item text-dark" href="/userprofile">Profile</a></li>
+                    <li><a class="dropdown-item text-dark" @click="logout">Sign out</a></li>
+                  </ul>
+                </div>
+                <a v-else href="/login" class="nav-link btn btn-success">Sign in</a>
               </li>
               <li class="nav-item">
-                <a href="/register" class="nav-link btn btn-outline-success"
-                  >Sign up</a
-                >
+                <a v-if="!user" href="/register" class="nav-link btn btn-outline-success">Sign up</a>
               </li>
             </ul>
           </div>
@@ -74,100 +76,50 @@
     <v-main>
       <router-view />
     </v-main>
-
-    <!-- <v-dialog v-model="dialog" max-width="500px">
-      <v-card>
-        <v-card-title>
-          <span class="headline">{{ isLogin ? 'Login' : 'Register' }}</span>
-        </v-card-title>
-        <v-card-text>
-          <v-form ref="form" v-model="valid" lazy-validation>
-            <v-text-field v-if="isLogin" v-model="username" label="Username" required></v-text-field>
-            <v-text-field v-if="!isLogin" v-model="email" label="Email" required></v-text-field>
-            <v-text-field v-model="password" label="Password" type="password" required></v-text-field>
-            <v-text-field v-if="!isLogin" v-model="name" label="Name" required></v-text-field>
-            <v-text-field v-if="!isLogin" v-model="age" label="Age" type="number" required></v-text-field>
-            <v-text-field v-if="!isLogin" v-model="city" label="City" required></v-text-field>
-          </v-form>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="green darken-1" text @click="isLogin ? handleLogin() : handleRegister()">{{ isLogin ? 'Sign In' : 'Register' }}</v-btn>
-          <v-btn color="red darken-1" text @click="dialog = false">Cancel</v-btn>
-        </v-card-actions>
-        <v-card-actions v-if="isLogin">
-          <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="isLogin = false">Don't have an account? Register</v-btn>
-        </v-card-actions>
-        <v-card-actions v-else>
-          <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="isLogin = true">Already have an account? Login</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog> -->
   </div>
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 export default {
-  data() {
-    return {
-      dialog: false,
-      isLogin: true,
-      username: "",
-      email: "",
-      password: "",
-      name: "",
-      age: "",
-      city: "",
-      valid: true,
-    };
-  },
+  props: ['user'],
   methods: {
-    openDialog(type) {
-      this.isLogin = type === "login";
-      this.dialog = true;
-    },
-    handleLogin() {
-      if (this.$refs.form.validate()) {
-        alert(`Username: ${this.username}\nPassword: ${this.password}`);
-        this.dialog = false;
+    handleCartClick() {
+      if (this.user) {
+        this.$router.push('/cart');
+      } else {
+        this.$router.push('/login');
       }
     },
-    handleRegister() {
-      if (this.$refs.form.validate()) {
-        const userData = {
-          email: this.email,
-          password: this.password,
-          name: this.name,
-          age: parseInt(this.age, 10), // Ensure age is an integer
-          city: this.city,
-        };
-        console.log("Posting data:", userData);
-        this.axios
-          .post("http://localhost:8000/api/createProfile", userData)
-          .then((response) => {
-            console.log(response);
-            alert("✅ User registered successfully!");
-            this.dialog = false;
-          })
-          .catch((error) => {
-            console.error("Error posting data:", error);
-            if (error.response) {
-              console.error("Error response data:", error.response.data);
-              alert(
-                `Failed to register user: ${
-                  error.response.data.message || error.response.data
-                }`
-              );
-            } else {
-              alert("Failed to register user.");
-            }
+    logout() {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You will be logged out",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, logout'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Remove user data from LocalStorage
+          localStorage.removeItem('user');
+          
+          // Show success message
+          Swal.fire(
+            'Logged Out!',
+            'You have been logged out successfully.',
+            'success'
+          ).then(() => {
+            // Reload the page or redirect to login
+            this.$router.push('/login');
           });
-      }
-    },
-  },
+        }
+      });
+    }
+  }
 };
 </script>
 
-<style></style>
+<style scoped></style>

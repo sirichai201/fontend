@@ -3,18 +3,15 @@
     <v-container class="my-16">
       <v-row class="text-center justify-content-center">
         <v-col lg="6" md="8" sm="12">
-          <h1>
-           TEST02
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
+          <h1 class="mb-2">
+            Welcome to <h1 class="d-inline text-primary">CaféShop</h1>. Where Every Sip and Bite Feels Like Home.
           </h1>
         </v-col>
       </v-row>
       <v-row class="text-center justify-content-center">
         <v-col lg="4" md="6" sm="12">
           <p class="mb-3">
-            Neque porro quisquam est qui dolorem ipsum quia dolor sit
-            amet,consectetur, adipisci velit.
+            Step into our café and let the aroma of freshly brewed coffee and homemade pastries transport you to a place of comfort and delight.
           </p>
         </v-col>
       </v-row>
@@ -28,7 +25,8 @@
               class="form-control"
               placeholder="Search"
             />
-          </form>
+          </form> 
+      
         </v-col>
       </v-row>
     </v-container>
@@ -53,16 +51,7 @@
               serve the best taste.
             </h1>
             <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English. Many desktop
-              publishing packages and web page editors now use Lorem Ipsum as
-              their default model text, and a search for 'lorem ipsum' will
-              uncover many web sites still in their infancy. Various versions
-              have evolved over the years, sometimes by accident, sometimes on
-              purpose (injected humour and the like).
+              At our café, every dish is a labor of love, crafted with the freshest ingredients and utmost care. From the moment it leaves the stove, you can taste the dedication and passion in every bite. We pride ourselves on serving the best flavors, whether it’s a comforting cup of coffee, a delightful pastry, or a hearty meal. Come and experience the perfect blend of freshness and taste that makes every visit to our café a memorable one.
             </p>
           </div>
         </v-col>
@@ -95,16 +84,7 @@
               Imported premium <br /><h1 class="text-success d-inline">ingredients</h1>.
             </h1>
             <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English. Many desktop
-              publishing packages and web page editors now use Lorem Ipsum as
-              their default model text, and a search for 'lorem ipsum' will
-              uncover many web sites still in their infancy. Various versions
-              have evolved over the years, sometimes by accident, sometimes on
-              purpose (injected humour and the like).
+              we believe that exceptional taste starts with exceptional ingredients. That's why we source only the finest, premium ingredients from around the world. Each component, from our rich coffee beans to our gourmet spices and artisanal cheeses, is carefully selected to ensure the highest quality. Experience the unparalleled flavors and textures that come from using the best ingredients, and discover why our café stands out as a haven for true food lovers.
             </p>
           </div>
         </v-col>
@@ -124,41 +104,41 @@
     </div>
 
     <v-container class="mb-16 mt-10">
-      <h1 class="mb-4">
-        Recommend <h1 class="text-primary d-inline">dishes</h1>.
-      </h1>
-      <v-row>
-        <v-col
-          lg="4"
-          md="4"
-          sm="12"
-          cols="12"
-          v-for="(item, i) in sortedMenu.slice(0, 3)"
-          :key="i"
-        >
-          <v-card :loading="loading" class="mx-auto bg-white">
-            <v-img :src="item.img" height="250"></v-img>
-            <div class="p-2">
-              <v-card-title class="d-flex justify-content-between flex-wrap align-items-center pb-0">
-                <h5 class="mb-0">{{ item.name }}</h5>
-                <span class="category">{{ item.category }}</span>
-              </v-card-title>
-    
-              <v-card-text>
-                <h1 class="d-block text-dark">{{ item.price }} ฿</h1>
-                <div class="my-5">{{ item.shortDesc }}</div>
-              </v-card-text>
-    
-              <v-card-actions class="d-flex justify-content-center">
-                <button class="btn btn-outline-success px-16 mb-5">
-                  Add to cart
-                </button>
-              </v-card-actions>
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
+    <h1 class="mb-4">
+      Recommend <h1 class="text-primary d-inline">dishes</h1>.
+    </h1>
+    <v-row>
+      <v-col
+        lg="4"
+        md="4"
+        sm="12"
+        cols="12"
+        v-for="product in products.slice(0, 3)"
+        :key="product._id"
+      >
+        <v-card :loading="loading" class="mx-auto bg-white">
+          <v-img :src="product.image" height="250"></v-img>
+          <div class="p-2">
+            <v-card-title class="d-flex justify-content-between flex-wrap align-items-center pb-0">
+              <h5 class="mb-0">{{ product.product_name }}</h5>
+              <span class="category">{{ product.product_type }}</span>
+            </v-card-title>
+
+            <v-card-text>
+              <h1 class="d-block text-dark">{{ product.product_price }} ฿</h1>
+              <div class="my-5">{{ product.dedication }}</div>
+            </v-card-text>
+
+            <v-card-actions class="d-flex justify-content-center">
+              <button class="btn btn-outline-success px-16 mb-5">
+                Add to cart
+              </button>
+            </v-card-actions>
+          </div>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 
     <div class="bg-danger-light">
       <v-container class="py-16">
@@ -205,19 +185,40 @@
 <script>
 import { Promotion } from "@/assets/data/Home.js";
 import { Menu } from "@/assets/data/MockData.js";
+import axios from 'axios';
+
 
 export default {
   data() {
     return {
       Promotion,
-      loading: false,
+      loading: true,
       sortedMenu: [],
+      products: [],
+   
     };
   },
   created() {
+    this.fetchProducts();
     this.sortedMenu = Menu.sort((a, b) => b.name.localeCompare(a.name));
+  },
+  methods: {
+    fetchProducts() {
+      axios
+        .get("http://127.0.0.1:3000/api/Product/Product") // เปลี่ยน URL เป็น API ของคุณ
+        .then((response) => {
+          this.products = response.data;
+          this.loading = false;
+        })
+        .catch((error) => {
+          console.error("There was an error fetching the products!", error);
+          this.loading = false;
+        });
+    },
   },
 };
 </script>
 
-<style></style>
+<style>
+
+</style>

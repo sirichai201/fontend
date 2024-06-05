@@ -10,7 +10,7 @@
   --white: #fffbfb;
   --dark: #181a20;
   --text: #212121;
-  --success: rgb(175, 227, 133);
+  --success: #afe385;
   --warning: #ffe587;
   --info: #85c1e3;
   --danger: #ff8787;
@@ -21,7 +21,7 @@
 
 * {
   font-size: 14px;
-  font-family: "Noto Sans Thai Looped", " Inter", sans-serif;
+  font-family: " Inter", "Noto Sans Thai Looped", sans-serif;
   box-sizing: border-box;
   color: var(--text);
   font-weight: 400;
@@ -40,8 +40,8 @@ h5,
 h6,
 label,
 thead {
-  font-family: "Noto Sans Thai", "Inter", sans-serif !important;
-  font-weight: bold;
+  font-family: "Inter", "Noto Sans Thai", sans-serif !important;
+  font-weight: 800 !important;
 }
 
 i.fa-solid:hover {
@@ -99,6 +99,13 @@ i.fa-solid:hover {
 .text-warning {
   color: var(--warning) !important;
 }
+.text-danger {
+  color: var(--danger) !important;
+}
+.text-info {
+  color: var(--info) !important;
+}
+
 a.text-white:hover {
   color: var(--primary) !important;
 }
@@ -131,7 +138,6 @@ pre code a {
 .bg-text {
   background-color: var(--text) !important;
 }
-
 
 .bg-warning {
   background-color: var(--warning) !important;
@@ -180,6 +186,24 @@ pre code a {
   color: var(--text) !important;
 }
 
+.btn-success-wh {
+  background-color: var(--success) !important;
+  border: 2px solid var(--success) !important;
+  color: var(--white) !important;
+}
+
+.btn-info {
+  background-color: var(--info) !important;
+  border: 2px solid var(--info) !important;
+  color: var(--white);
+}
+
+.btn-danger {
+  background-color: var(--danger) !important;
+  border: 2px solid var(--danger) !important;
+  color: var(--white);
+}
+
 .bg-success {
   background-color: var(--success) !important;
 }
@@ -189,17 +213,22 @@ pre code a {
 }
 
 .bg-danger {
-  background-color: var(--danger) !important; 
+  background-color: var(--danger) !important;
 }
 
 .bg-danger-light {
-  background-color: rgba(255, 135, 135, 0.3); 
+  background-color: rgba(255, 135, 135, 0.3);
 }
 
 .btn-success:hover {
   background-color: var(--gray);
   border: 2px solid var(--gray);
   color: var(--white) !important;
+}
+
+.btn-success-wh:hover {
+  background-color: transparent !important;
+  color: var(--text) !important;
 }
 
 .btn-outline-success {
@@ -211,6 +240,19 @@ pre code a {
   background-color: var(--success);
   border: 2px solid var(--success);
   color: var(--white) !important;
+}
+
+.btn-info:hover {
+  background: transparent !important;
+  border-color: var(--info) !important;
+  color: var(--text) !important;
+}
+
+
+.btn-danger:hover {
+  background: transparent !important;
+  border-color: var(--danger) !important;
+  color: var(--text) !important;
 }
 
 .bg-gray {
@@ -232,7 +274,7 @@ pre code a {
   padding: 0.5rem 1rem;
 }
 
-.accordion-button, 
+.accordion-button,
 .accordion-item {
   background-color: transparent !important;
 }
@@ -248,6 +290,19 @@ pre code a {
 .accordion-button:not(.collapsed) {
   background-color: var(--white) !important;
   color: var(--primary) !important;
+}
+
+.card {
+  border-radius: var(--border-main) !important;
+  box-shadow: var(--shadow-main) !important;
+}
+
+.card-header {
+  border-radius: 1rem 1rem 0 0 !important;
+}
+
+.card-footer {
+  border-radius: 0 0 1rem 1rem !important;
 }
 
 .navbar-toggler {
@@ -286,15 +341,6 @@ footer .nav-link i {
 footer .nav-link :hover {
   color: var(--text);
 }
-
-
-
-
-
-
-
-
-
 
 /* Vuetify */
 .theme--light.v-divider {
@@ -358,6 +404,9 @@ div.v-breadcrumbs__item {
   color: var(--primary);
 }
 
+button.v-pagination__item .v-pagination__item--active .red {
+  background-color: var(--danger) !important;
+}
 
 
 
@@ -401,7 +450,7 @@ div.v-breadcrumbs__item {
 }
 
 .login-bg:before {
-  content: ' ';
+  content: " ";
   display: block;
   position: absolute;
   left: 0;
@@ -412,6 +461,25 @@ div.v-breadcrumbs__item {
   background-image: url("https://media.istockphoto.com/id/475511846/vector/kitchen-seamless-pattern-vector-background.jpg?s=612x612&w=0&k=20&c=inpW5Mc2MFyuc7PsMXVY49OUBU39EXekcCNe8xVeI_k=");
   width: 100%;
   background-repeat: repeat;
+}
+
+.hero-bg:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 12vh;
+  width: 100%;
+  height: 300px;
+  opacity: 1;
+  background-image: url("https://wallpapers.com/images/featured/food-4k-1pf6px6ryqfjtnyr.jpg");
+  width: 100%;
+  background-repeat: repeat;
+}
+
+.img-cart {
+  width: 20vh;
+  height: 20vh;
 }
 
 /* ENDLESS ROTATE */
@@ -437,12 +505,6 @@ div.v-breadcrumbs__item {
     rotate: -45deg;
   }
 }
-
-
-
-
-
-
 
 /* Responsive */
 @media screen and (max-width: 576px) {
