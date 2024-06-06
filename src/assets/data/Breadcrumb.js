@@ -12,3 +12,8 @@ export const Profile = [
   { text: "Home", href: "/" },
   { text: "Profile", active: true },
 ];
+
+export const Admin = [
+  { text: "Admin", href: "/" },
+  { text: "Dashboard", active: true },
+];

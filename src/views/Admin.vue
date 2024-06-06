@@ -2,9 +2,7 @@
     <v-container>
         <v-row>
             <v-col cols="12">
-                <a class="align-start text-black text-decoration-none" href="/">Home</a>
-                <a class="align-start text-black text-decoration-none" href="/">Admin</a>
-                <a class="align-start text-black text-decoration-none" href="/">Dashboard</a>
+                <v-breadcrumbs :items="Admin"></v-breadcrumbs>
             </v-col>
         </v-row>
 
@@ -125,12 +123,12 @@
 
 <script>
 import axios from 'axios';
-import { Menu } from "@/assets/data/Breadcrumb.js";
+import { Admin } from "@/assets/data/Breadcrumb.js";
 
 export default {
     data() {
         return {
-            items: Menu,
+            Admin: Admin,
             user: [],
             bill: [],
             product: [],

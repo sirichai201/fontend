@@ -17,19 +17,19 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a href="/" class="nav-link">Home</a>
+                <a href="/dashboard" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
-                <a href="/allweapon" class="nav-link">Dashboard</a>
+                <a href="/" class="nav-link">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a href="/features" class="nav-link">Product</a>
+                <a href="/" class="nav-link">Product</a>
               </li>
               <li class="nav-item">
-                <a href="/menu" class="nav-link">Users</a>
+                <a href="/" class="nav-link">Users</a>
               </li>
               <li class="nav-item">
-                <a href="/allBundle" class="nav-link">Orders</a>
+                <a href="/" class="nav-link">Orders</a>
               </li>
               <li class="nav-item dropdown">
                 <a

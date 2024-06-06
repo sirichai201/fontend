@@ -48,12 +48,13 @@
           </div>
           <div class="text-center mb-16">
             <button type="submit" class="btn btn-primary px-16">Login</button>
+            <p v-if="loginMessage" class="text-danger">{{ loginMessage }}</p>
           </div>
           <div class="text-center">
             No account? Sign up
             <a href="/register" class="text-primary">here</a>
           </div>
-          <p v-if="loginMessage" class="login-message">{{ loginMessage }}</p>
+          
         </form>
       </v-card>
     </v-container>

@@ -55,8 +55,8 @@ const routes = [
     component: () => import("../components/AdminNav.vue"),
     children: [
       {
-        path: "",  // This is the default sub-path for the admin
-        name: "admin",
+        path: "dashboard",  // This is the default sub-path for the admin
+        name: "dashboard",
         component: () => import("../views/Admin.vue"),
       },
     ],
