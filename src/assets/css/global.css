@@ -11,9 +11,11 @@
   --dark: #181a20;
   --text: #212121;
   --success: #afe385;
+  --success-light: rgba(175, 227, 133, 0.3);
   --warning: #ffe587;
   --info: #85c1e3;
   --danger: #ff8787;
+  --danger-light: rgba(255, 135, 135, 0.3);
   --border-button: 20rem;
   --border-main: 1rem;
   --shadow-main: 0 2px 2px rgba(0, 0, 0, 0.25);
@@ -26,6 +28,7 @@
   color: var(--text);
   font-weight: 400;
   scroll-behavior: smooth;
+  transition: 0.3s;
 }
 
 .v-application--wrap {
@@ -42,6 +45,40 @@ label,
 thead {
   font-family: "Inter", "Noto Sans Thai", sans-serif !important;
   font-weight: 800 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-bottom: 0;
+}
+
+h1.heading-1 {
+  font-size: calc(1.625rem + 4.5vw);
+}
+
+h2.heading-2 {
+  font-size: calc(1.575rem + 3.9vw);
+}
+
+h3.heading-3 {
+  font-size: calc(1.525rem + 3.3vw);
+}
+
+h4.heading-4 {
+  font-size: calc(1.475rem + 2.7vw);
+}
+
+h5.heading-5 {
+  font-size: calc(1.425rem + 2.1vw);
+}
+
+h6.heading-6 {
+  font-size: calc(1.375rem + 1.5vw);
 }
 
 i.fa-solid:hover {
@@ -209,7 +246,7 @@ pre code a {
 }
 
 .bg-success-light {
-  background-color: rgba(175, 227, 133, 0.3);
+  background-color: var(--success-light);
 }
 
 .bg-danger {
@@ -217,7 +254,7 @@ pre code a {
 }
 
 .bg-danger-light {
-  background-color: rgba(255, 135, 135, 0.3);
+  background-color: var(--danger-light);
 }
 
 .btn-success:hover {
@@ -247,7 +284,6 @@ pre code a {
   border-color: var(--info) !important;
   color: var(--text) !important;
 }
-
 
 .btn-danger:hover {
   background: transparent !important;
@@ -294,7 +330,7 @@ pre code a {
 
 .card {
   border-radius: var(--border-main) !important;
-  box-shadow: var(--shadow-main) !important;
+  /* box-shadow: var(--shadow-main) !important; */
 }
 
 .card-header {
@@ -303,6 +339,10 @@ pre code a {
 
 .card-footer {
   border-radius: 0 0 1rem 1rem !important;
+}
+
+.shadow-main {
+  box-shadow: var(--shadow-main) !important;
 }
 
 .navbar-toggler {
@@ -341,6 +381,21 @@ footer .nav-link i {
 footer .nav-link :hover {
   color: var(--text);
 }
+
+
+
+
+
+/* Font Awesome */
+.fa-2xl {
+  font-size: calc(1.575rem + 3.9vw) !important;
+}
+
+
+
+
+
+
 
 /* Vuetify */
 .theme--light.v-divider {
@@ -396,17 +451,33 @@ footer .nav-link :hover {
   box-shadow: none !important;
 }
 
-a.v-breadcrumbs__item {
-  color: var(--secondary) !important;
+ol.breadcrumb {
+  padding: 18px 0;
+  margin-bottom: 0;
 }
 
-div.v-breadcrumbs__item {
-  color: var(--primary);
+a.v-breadcrumbs__item,
+.breadcrumb-item a,
+.breadcrumb-item + .breadcrumb-item::before {
+  color: var(--secondary) !important;
+  text-decoration: none !important;
+}
+
+div.v-breadcrumbs__item,
+.breadcrumb-item.active span {
+  color: var(--primary) !important;
 }
 
 button.v-pagination__item .v-pagination__item--active .red {
   background-color: var(--danger) !important;
 }
+
+.v-btn-toggle:not(.v-btn-toggle--dense) .v-btn.v-btn.v-size--default {
+  height: 38px !important;
+  min-width: 24px !important;
+}
+
+
 
 
 
@@ -432,6 +503,10 @@ button.v-pagination__item .v-pagination__item--active .red {
   border-radius: 0.5rem 0.5rem 10rem 0.5rem;
   width: 100%;
   height: fill;
+}
+
+.card-detail {
+  border-radius: 0.5rem 10rem 0.5rem 0.5rem !important;
 }
 
 .random-img {
@@ -477,9 +552,30 @@ button.v-pagination__item .v-pagination__item--active .red {
   background-repeat: repeat;
 }
 
+.hero-bg-2:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 18vh;
+  width: 100%;
+  height: 300px;
+  background-color: var(--success-light);
+  width: 100%;
+  background-repeat: repeat;
+}
+
 .img-cart {
-  width: 20vh;
-  height: 20vh;
+  width: 25vh;
+  min-width: 100px;
+  height: 25vh;
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-radius: var(--border-main);
+}
+
+a .text-secondary:hover {
+  color: var(--dark-gray) !important;
 }
 
 /* ENDLESS ROTATE */
@@ -512,9 +608,15 @@ button.v-pagination__item .v-pagination__item--active .red {
   .random-img {
     height: 200px;
   }
+  .img-cart {
+    height: 50px;
+  }
 }
 
 @media screen and (max-width: 768px) {
+  .img-cart {
+    height: 150px;
+  }
 }
 
 @media screen and (max-width: 992px) {
@@ -524,4 +626,7 @@ button.v-pagination__item .v-pagination__item--active .red {
 }
 
 @media screen and (max-width: 1200px) {
+  .img-cart {
+    height: 200px;
+  }
 }

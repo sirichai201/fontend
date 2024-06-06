@@ -30,13 +30,14 @@
         <v-col
           lg="4"
           md="4"
-          sm="12"
-          cols="12"
+          sm="6"
+          cols="6"
           v-for="product in paginatedProducts"
           :key="product._id"
         >
         <a :href="`/menu/${product._id}`" class="text-decoration-none">
-          <v-card class="mx-auto bg-white">
+          <v-card class="mx-auto bg-white"  >
+            
             <v-img
               height="250"
               :src="product.image || 'https://cdn.vuetifyjs.com/images/cards/cooking.png'"
@@ -57,7 +58,7 @@
               </v-card-text>
 
               <v-card-actions class="d-flex justify-content-center">
-                <button class="btn btn-outline-success px-16 mb-5">
+                <button class="btn btn-outline-success px-lg-16 mb-5">
                   Add to cart
                 </button>
               </v-card-actions>
@@ -120,6 +121,11 @@ export default {
       return Food[randomIndex].src;
     },
 
+
+
+    goToProductDetail(productId) {
+    this.$router.push({ name: 'MenuDetail', params: { id: productId } });
+},
     async fetchProducts() {
       try {
         const response = await axios.get('http://127.0.0.1:3000/api/Product/Product');

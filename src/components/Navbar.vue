@@ -17,15 +17,6 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a href="/" class="nav-link">Foods</a>
-            </li>
-            <li class="nav-item">
-              <a href="/allweapon" class="nav-link">Drinks</a>
-            </li>
-            <li class="nav-item">
-              <a href="/features" class="nav-link">Appetizers</a>
-            </li>
-            <li class="nav-item">
               <a href="/menu" class="nav-link">Menu</a>
             </li>
             <li class="nav-item">
@@ -50,7 +41,7 @@
           <div class="d-flex">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item mr-2 mb-lg-0 mb-md-2 mb-sm-2 mb-2">
-                <a @click.prevent="handleCartClick" class="nav-link"><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
+                <a @click.prevent="handleCartClick" class="nav-link"><i class="fa-solid fa-bag-shopping fa-xl"></i></a>
               </li>
               <li class="nav-item mr-2 mb-lg-0 mb-md-2 mb-sm-2 mb-2">
                 <!-- <a v-if="user" href="/profile" class="nav-link btn btn-outline-success">{{ user.username }}</a> -->

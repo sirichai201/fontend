@@ -14,6 +14,16 @@ export const Profile = [
 ];
 
 export const Admin = [
-  { text: "Admin", href: "/" },
+  { text: "Admin", href: "/admin/dashboard" },
   { text: "Dashboard", active: true },
+];
+
+export const Product = [
+  { text: "Admin", href: "/admin/dashboard" },
+  { text: "Products", active: true },
+];
+
+export const Users = [
+  { text: "Admin", href: "/admin/dashboard" },
+  { text: "Users", active: true },
 ];

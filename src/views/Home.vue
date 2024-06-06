@@ -130,7 +130,7 @@
             </v-card-text>
 
             <v-card-actions class="d-flex justify-content-center">
-              <button class="btn btn-outline-success px-16 mb-5">
+              <button class="btn btn-outline-success px-lg-16 mb-5">
                 Add to cart
               </button>
             </v-card-actions>
@@ -195,7 +195,6 @@ export default {
       loading: true,
       sortedMenu: [],
       products: [],
-   
     };
   },
   created() {

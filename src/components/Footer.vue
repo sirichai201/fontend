@@ -57,7 +57,7 @@
         </v-col>
       </v-row>
       <small class="d-flex justify-content-center text-secondary mb-1">
-        Copyright © 2024 CafeShop. All Rights Reserved
+        Copyright © 2024 CaféShop. All Rights Reserved
       </small>
     </v-container>
   </footer>

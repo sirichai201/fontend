@@ -84,7 +84,7 @@ export default {
           }
         );
         Swal.fire({
-          title: "Login Successful",
+          title: "Welcome!",
           text: response.data.message,
           icon: "success",
           confirmButtonText: "OK",
@@ -107,7 +107,7 @@ export default {
 
         // Show error message
         Swal.fire({
-          title: "Login Failed",
+          title: "Error, Something went wrong!",
           text: errorMessage,
           icon: "error",
           confirmButtonText: "OK",

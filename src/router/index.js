@@ -59,11 +59,17 @@ const routes = [
         name: "dashboard",
         component: () => import("../views/Admin.vue"),
       },
+      {
+        path: "products", 
+        name: "products", 
+        component: () => import("../views/Products.vue"),
+      },
+      {
+        path: "users", 
+        name: "users", 
+        component: () => import("../views/Users.vue"),
+      }
     ],
-  },
-  {
-    path: "*",  // Catch all undefined routes
-    redirect: "/",
   },
 ];
 
